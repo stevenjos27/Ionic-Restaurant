@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Menu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-image">
+  <div *ngIf="dishes">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-lg-4 *ngFor="let dish of dishes">
+          <ion-card (click)="dishSelected($event,dish)" (pan)="addToFavorites(dish)">
+            <img src="{{BaseURL + dish.image}}" alt="">
+            <div class="card-title">{{ dish.name }}</div>
+            <div class="card-subtitle">{{ dish.description }}</div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div [hidden]="dishes || errMess">
+    <ion-spinner></ion-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{ errMess }}</h4>
+  </div>
+</ion-content>
