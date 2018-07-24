@@ -24,8 +24,8 @@ export class FavoritesPage implements OnInit {
 
   ngOnInit() {
     this.favoriteservice.getFavorites()
-      .subscribe(favorites => this.favorites = favorites,
-        errmess => this.errMess = errmess);
+    .subscribe(favorites => this.favorites = favorites,
+      errmess => this.errMess = errmess);      
   }
 
   ionViewDidLoad() {
@@ -59,8 +59,9 @@ export class FavoritesPage implements OnInit {
             });
             loading.present();
             this.favoriteservice.deleteFavorite(id)
-              .subscribe(favorites => { this.favorites = favorites; loading.dismiss(); toast.present(); },
-                errmess => { this.errMess = errmess; loading.dismiss(); });
+            .subscribe(favorites => { this.favorites = favorites; loading.dismiss(); toast.present(); },
+            errmess => { this.errMess = errmess; loading.dismiss(); });
+              
           }
         }
       ]

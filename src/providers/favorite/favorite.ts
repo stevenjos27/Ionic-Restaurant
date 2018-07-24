@@ -13,6 +13,10 @@ export class FavoriteProvider {
   constructor(public http: Http, private dishservice: DishProvider, private storage: Storage) {
     console.log('Hello FavoriteProvider Provider');
     this.favorites = [];
+    this.storage.get('favorites').then(dish => {
+      this.favorites = dish;
+    });
+
   }
 
   addFavorite(id:number): boolean {
@@ -27,19 +31,13 @@ export class FavoriteProvider {
     return this.favorites.some(el => el === id);
   }
 
-   getFavorites(): Observable<Dish[]>{
-     return this.dishservice.getDishes()
-     .map(dishes => dishes.filter(dish => this.favorites.some(el => el === dish.id)));
-   }
+    getFavorites(): Observable<Dish[]>{
+       return this.dishservice.getDishes()
+       .map(dishes => dishes.filter(dish => this.favorites.some(el => el === dish.id)));
+    }
 
-  // getFavorites(){
-  //   this.storage.get('favorites').then(dish => {
-  //     console.log("dish: "+dish);
-  //     return dish;
-  //   })
-  // }
   
-  deleteFavorite(id: number): Observable<Dish[]>{
+deleteFavorite(id: number): Observable<Dish[]>{
     let index = this.favorites.indexOf(id);
     if(index >= 0 ){
       this.favorites.splice(index,1);
