@@ -19,6 +19,10 @@
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocalNotification\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.localnotification.LocalNotification\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -28,6 +32,50 @@
                     "/*": [
                         {
                             "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.IonicKeyboard\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.TriggerReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.ClearReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.localnotification.ClickActivity\" android:theme=\"@android:style/Theme.NoDisplay\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.notification.TriggerReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.notification.ClearReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.RestoreReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.notification.ClickActivity\" android:theme=\"@android:style/Theme.NoDisplay\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
                         }
                     ]
@@ -49,6 +97,12 @@
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "cordova-plugin-ionic-keyboard": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
             "PACKAGE_NAME": "io.ionic.starter"
         }
     },
@@ -77,6 +131,33 @@
             "clobbers": [
                 "window.Keyboard"
             ]
+        },
+        {
+            "id": "de.appplant.cordova.plugin.local-notification.LocalNotification",
+            "file": "plugins/de.appplant.cordova.plugin.local-notification/www/local-notification.js",
+            "pluginId": "de.appplant.cordova.plugin.local-notification",
+            "clobbers": [
+                "cordova.plugins.notification.local",
+                "plugin.notification.local"
+            ]
+        },
+        {
+            "id": "de.appplant.cordova.plugin.local-notification.LocalNotification.Core",
+            "file": "plugins/de.appplant.cordova.plugin.local-notification/www/local-notification-core.js",
+            "pluginId": "de.appplant.cordova.plugin.local-notification",
+            "clobbers": [
+                "cordova.plugins.notification.local.core",
+                "plugin.notification.local.core"
+            ]
+        },
+        {
+            "id": "de.appplant.cordova.plugin.local-notification.LocalNotification.Util",
+            "file": "plugins/de.appplant.cordova.plugin.local-notification/www/local-notification-util.js",
+            "pluginId": "de.appplant.cordova.plugin.local-notification",
+            "merges": [
+                "cordova.plugins.notification.local.core",
+                "plugin.notification.local.core"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -84,6 +165,8 @@
         "cordova-plugin-device": "2.0.2",
         "cordova-plugin-splashscreen": "5.0.2",
         "cordova-plugin-ionic-webview": "1.1.19",
-        "cordova-plugin-ionic-keyboard": "2.0.5"
+        "cordova-plugin-ionic-keyboard": "2.0.5",
+        "cordova-plugin-app-event": "1.2.1",
+        "de.appplant.cordova.plugin.local-notification": "0.8.5"
     }
 }
