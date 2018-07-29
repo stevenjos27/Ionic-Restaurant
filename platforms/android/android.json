@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"LocalNotification\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.localnotification.LocalNotification\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"EmailComposer\"><param name=\"android-package\" value=\"de.martinreinhardt.cordova.plugins.email.EmailComposer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -104,6 +108,9 @@
         },
         "de.appplant.cordova.plugin.local-notification": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-email": {
+            "PACKAGE_NAME": "io.ionic.starter"
         }
     },
     "dependent_plugins": {},
@@ -158,6 +165,15 @@
                 "cordova.plugins.notification.local.core",
                 "plugin.notification.local.core"
             ]
+        },
+        {
+            "id": "cordova-plugin-email.EmailComposer",
+            "file": "plugins/cordova-plugin-email/www/email_composer.js",
+            "pluginId": "cordova-plugin-email",
+            "clobbers": [
+                "cordova.plugins.email",
+                "plugin.email"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -167,6 +183,7 @@
         "cordova-plugin-ionic-webview": "1.1.19",
         "cordova-plugin-ionic-keyboard": "2.0.5",
         "cordova-plugin-app-event": "1.2.1",
-        "de.appplant.cordova.plugin.local-notification": "0.8.5"
+        "de.appplant.cordova.plugin.local-notification": "0.8.5",
+        "cordova-plugin-email": "1.2.7"
     }
 }
