@@ -59,4 +59,7 @@
     <feature name="EmailComposer">
         <param name="android-package" value="de.martinreinhardt.cordova.plugins.email.EmailComposer" />
     </feature>
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
 </widget>
