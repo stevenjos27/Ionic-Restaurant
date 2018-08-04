@@ -27,6 +27,7 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Camera } from '@ionic-native/camera';
+import { Network } from '@ionic-native/network';
 
 import { baseURL } from './../shared/baseurl';
 import { FavoriteProvider } from '../providers/favorite/favorite';
@@ -79,7 +80,8 @@ import { FavoriteProvider } from '../providers/favorite/favorite';
     FavoriteProvider,
     EmailComposer,
     SocialSharing,
-    Camera
+    Camera,
+    Network
   ]
 })
 export class AppModule {}
