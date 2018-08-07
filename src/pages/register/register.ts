@@ -17,25 +17,25 @@ export class RegisterPage {
     private camera: Camera,
     private formBuilder: FormBuilder) {
 
-      this.registerForm = this.formBuilder.group({
-        firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-        lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-        username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
-        telnum: ['', [Validators.required, Validators.pattern]],
-        email: ['', [Validators.required, Validators.email]]
-      });
+    this.registerForm = this.formBuilder.group({
+      firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      telnum: ['', [Validators.required, Validators.pattern]],
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  dismiss(){
+  dismiss() {
     this.viewCtrl.dismiss(true);
   }
 
-  getPicture(){
+  getPicture() {
     const options: CameraOptions = {
       quality: 100,
       targetHeight: 100,
@@ -49,15 +49,36 @@ export class RegisterPage {
     };
 
     this.camera.getPicture(options)
-    .then((imageData) => {
-      this.image = imageData;
-    },
-    (err) => { console.log('Error obtaining picture')})
+      .then((imageData) => {
+        this.image = imageData;
+      },
+        (err) => { console.log('Error obtaining picture') })
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.registerForm.value);
     this.dismiss();
+  }
+
+  getFromLibrary() {
+    const options: CameraOptions = {
+      quality: 100,
+      targetHeight: 100,
+      targetWidth: 100,
+      correctOrientation: true,
+      allowEdit: true,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE,
+      cameraDirection: this.camera.Direction.FRONT,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    };
+
+    this.camera.getPicture(options)
+      .then((imageData) => {
+        this.image = imageData;
+      },
+        (err) => { console.log('Error obtaining picture') })
   }
 
 }

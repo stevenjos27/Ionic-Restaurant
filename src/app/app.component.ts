@@ -1,3 +1,4 @@
+import { CallNumber } from '@ionic-native/call-number';
 import { Network } from '@ionic-native/network';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Icon, ModalController, LoadingController } from 'ionic-angular';
@@ -26,7 +27,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
   public modalCtrl: ModalController, private loadingCtrl: LoadingController,
-  private network: Network) {
+  private network: Network, private callNumber: CallNumber) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

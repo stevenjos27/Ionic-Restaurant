@@ -22,6 +22,9 @@
         <ion-col>
           <button ion-button small (click)="getPicture()">Take Picture</button>
         </ion-col>
+        <ion-col>
+          <button ion-button small (click)="getFromLibrary()">Get from Library</button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
@@ -50,6 +53,6 @@
       <ion-label floating>Email</ion-label>
       <ion-input type="email" formControlName="email" email></ion-input>
     </ion-item>
-    <button ion-button type="submit" [disabled]="!registerForm.valid"></button>
+    <button ion-button type="submit" [disabled]="!registerForm.valid">Register</button>
   </form>
 </ion-content>

@@ -122,6 +122,14 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "id": "mx.ferreyra.callnumber.CallNumber",
+        "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
+        "pluginId": "mx.ferreyra.callnumber",
+        "clobbers": [
+            "call"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -139,7 +147,8 @@ module.exports.metadata =
     "cordova-plugin-x-socialsharing": "5.4.1",
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-camera": "2.4.1",
-    "cordova-plugin-network-information": "2.0.1"
+    "cordova-plugin-network-information": "2.0.1",
+    "mx.ferreyra.callnumber": "0.0.2"
 };
 // BOTTOM OF METADATA
 });
